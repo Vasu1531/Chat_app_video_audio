@@ -14,7 +14,20 @@ export const checkUser =async (req,res,next)=>{
         else {
             return res.json({msg :"User Found",status:true ,data:user});
         }
-    }catch{
+    }catch(err){
         next(err);
     }
 };
+
+export const onBoardUser=async(req,res,next)=>{
+    try{
+        const {email,name,about,image:profilePicture}=req.body;
+        if(!email || !name || !profilePicture){
+            return res.send("Email,name And Image are required.");
+        }
+
+    }
+    catch(err){
+       next(err)
+    }
+}
